@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Tuesday, January 04, 2022 21:12:23}
+%TCIDATA{LastRevised=Tuesday, April 28, 2026 01:20:19}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -122,7 +122,6 @@
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\lcm}{\operatorname{lcm}}
 \newcommand{\rev}{\operatorname{rev}}
-\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\tup}[1]{\left( #1 \right)}
@@ -180,7 +179,7 @@ some content that goes beyond our course) is covered by textbooks like
 \cite{Strick20}, \cite[Part I]{GalQua20}, \cite{Loehr14}, \cite{Woerde16}%
 \footnote{This list is nowhere near complete. (It is biased towards freely
 available sources, but even in that category it is probably far from
-comprehensive.)}. The text we will follow the closest is \cite{HorJoh13}.
+comprehensive.)}. The text we will follow most closely is \cite{HorJoh13}.
 
 We will freely use the basic theory of complex numbers, including the
 Fundamental Theorem of Algebra. See \cite[Chapters 2--3]{LaNaSc16} or
@@ -336,9 +335,9 @@ y_{n}%
 }+\cdots+x_{n}\overline{y_{n}}\in\mathbb{C}
 \label{eq.def.unitary.innerprod.innerprod.def}%
 \end{equation}
-(where $\overline{z}$ denotes the complex conjugate of a $z\in\mathbb{C}$).
-This scalar $\left\langle x,y\right\rangle $ is called the \emph{inner
-product} (or \emph{dot product}) of $x$ and $y$.
+(where $\overline{z}$ denotes the complex conjugate of a complex number
+$z\in\mathbb{C}$). This scalar $\left\langle x,y\right\rangle $ is called the
+\emph{inner product} (or \emph{dot product}) of $x$ and $y$.
 \end{definition}
 
 \begin{example}
@@ -532,7 +531,7 @@ If $x=\left(
 \right)  \in\mathbb{C}^{2}$, then%
 \begin{align*}
 \left\langle x,x\right\rangle  &  =\left(  1+i\right)  \left(  \overline
-{1+i}\right)  +\left(  3-2i\right)  \left(  \overline{3+2i}\right)  =\left(
+{1+i}\right)  +\left(  3-2i\right)  \left(  \overline{3-2i}\right)  =\left(
 1+i\right)  \left(  1-i\right)  +\left(  3-2i\right)  \left(  3+2i\right) \\
 &  =1+1+9+4=15
 \end{align*}
@@ -853,7 +852,8 @@ orthonormal\textquotedblright.
 1
 \end{array}
 \right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthonormal. It is also
-a basis of $\mathbb{C}^{3}$, and known as the \emph{standard basis}. \medskip
+a basis of $\mathbb{C}^{3}$, and is known as the \emph{standard basis}.
+\medskip
 
 \textbf{(b)} More generally: Let $n\in\mathbb{N}$. Let $e_{1},e_{2}%
 ,\ldots,e_{n}\in\mathbb{C}^{n}$ be the vectors defined by%
@@ -1005,9 +1005,10 @@ This proves Proposition \ref{prop.unitary.orthog.indep}.
 The following simple lemma will be used further below:
 
 \begin{lemma}
-\label{lem.unitary.orthog.one-more}Let $k<n$. Let $a_{1},a_{2},\ldots,a_{k}$
-be $k$ vectors in $\mathbb{C}^{n}$. Then, there exists a nonzero vector
-$b\in\mathbb{C}^{n}$ that is orthogonal to each of $a_{1},a_{2},\ldots,a_{k}$.
+\label{lem.unitary.orthog.one-more}Let $k<n$ be nonnegative integers. Let
+$a_{1},a_{2},\ldots,a_{k}$ be $k$ vectors in $\mathbb{C}^{n}$. Then, there
+exists a nonzero vector $b\in\mathbb{C}^{n}$ that is orthogonal to each of
+$a_{1},a_{2},\ldots,a_{k}$.
 \end{lemma}
 
 \begin{proof}
@@ -1516,12 +1517,20 @@ The equivalence $\mathcal{A}\Longleftrightarrow\mathcal{B}$ follows
 immediately from Definition \ref{def.unitary.unitary.unitary}. The equivalence
 $\mathcal{B}\Longleftrightarrow\mathcal{C}$ follows immediately from the
 definition of an isometry (since $\left(  U^{\ast}\right)  ^{\ast}=U$). The
-implication $\mathcal{D}\Longrightarrow\mathcal{C}$ is obvious. The
-implication $\mathcal{C}\Longrightarrow\mathcal{D}$ follows from the known
-fact (see, e.g., \cite[Chapter 2, Corollary 3.7]{Treil15}) that every
-invertible matrix is square. Let us now prove some of the other implications:
+implication $\mathcal{D}\Longrightarrow\mathcal{C}$ is obvious. Let us now
+prove some of the other implications:
 
 \begin{itemize}
+\item $\mathcal{C}\Longrightarrow\mathcal{D}$\textit{:} Assume that statement
+$\mathcal{C}$ holds. That is, $UU^{\ast}=I_{n}$ and $U^{\ast}U=I_{k}$. In
+other words, the matrices $U$ and $U^{\ast}$ are mutually inverse. Hence, the
+matrix $U$ is invertible. Now, recall the known fact (see, e.g., \cite[Chapter
+2, Corollary 3.7]{Treil15}) that every invertible matrix is square. Hence, the
+matrix $U$ is square (since it is invertible). Of course, its inverse is
+$U^{-1}=U^{\ast}$ (since $U$ and $U^{\ast}$ are mutually inverse). Thus,
+statement $\mathcal{D}$ holds. We have thus proved the implication
+$\mathcal{C}\Longrightarrow\mathcal{D}$.
+
 \item $\mathcal{D}\Longrightarrow\mathcal{E}$\textit{:} Assume that statement
 $\mathcal{D}$ holds. Then, $U^{\ast}U=I_{k}$ (since $U^{-1}=U^{\ast}$), and
 therefore $U$ is an isometry. Hence, Proposition
@@ -3190,7 +3199,7 @@ v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}%
 &  =\sum_{\substack{k\in\left[  p-1\right]  ;\\k\neq a}}\dfrac{\left\langle
 v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle
 }\underbrace{\left\langle z_{k},z_{a}\right\rangle }_{\substack{=0\\\text{(by
-(\ref{pf.thm.unitary.gs.13}), applied to }k\text{ and }a\\\text{instead of
+(\ref{pf.thm.unitary.gs.12b}), applied to }k\text{ and }a\\\text{instead of
 }a\text{ and }b\text{)}}}+\underbrace{\dfrac{\left\langle v_{p},z_{a}%
 \right\rangle }{\left\langle z_{a},z_{a}\right\rangle }\left\langle
 z_{a},z_{a}\right\rangle }_{=\left\langle v_{p},z_{a}\right\rangle }\\
@@ -3526,10 +3535,10 @@ A=\underbrace{\left(
 \right)  }_{=Q}\underbrace{\left(
 \begin{array}
 [c]{cccc}%
-2 & -2 & 1 & 0\\
-0 & 2 & 1 & 2\\
-0 & 0 & 0 & 0\\
-0 & 0 & 0 & 2
+2 & -2 & 1 & 2\\
+0 & 2 & 1 & 0\\
+0 & 0 & 0 & 2\\
+0 & 0 & 0 & 0
 \end{array}
 \right)  }_{=R}.
 \]
@@ -4596,9 +4605,9 @@ In other words,%
 \right)  \sim\left(
 \begin{array}
 [c]{ccc}%
-\lambda_{3} & 0 & 0\\
-0 & \lambda_{1} & 0\\
-0 & 0 & \lambda_{2}%
+\lambda_{2} & 0 & 0\\
+0 & \lambda_{3} & 0\\
+0 & 0 & \lambda_{1}%
 \end{array}
 \right)  .
 \]
@@ -4760,6 +4769,12 @@ A_{\sigma\left(  1\right)  } & 0 & \cdots & 0\\
 \]
 this time; its proof is easy with the help of Proposition
 \ref{prop.blockmatrix.mult-uxv}.
+
+We also need to show that the \textquotedblleft block permutation
+matrix\textquotedblright\ $\mathbf{P}_{\sigma}$ is invertible. To show this,
+it suffices to check that $\mathbf{P}_{\sigma}$ and $\mathbf{P}_{\sigma^{-1}}$
+are mutually inverse. (Using Proposition \ref{prop.blockmatrix.mult-uxv}, this
+is just as easy as the corresponding property of usual permutation matrices.)
 \end{proof}
 
 Similarity of block-diagonal matrices can also come from similarity of the
@@ -4975,7 +4990,7 @@ _{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots
 \end{proposition}
 
 \begin{proof}
-Let $P_{\sigma}\in\mathbb{F}^{n\times n}$ be the permutation matrix of
+Let $P_{\sigma}\in\mathbb{C}^{n\times n}$ be the permutation matrix of
 $\sigma$ (defined in Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). In
 the proof of Proposition \ref{prop.schurtri.similar.diag}, we have shown that
 \[
@@ -5931,8 +5946,8 @@ m-1\right)  }$ such that $B\sim S$ and such that the diagonal entries of $S$
 are $\lambda_{2},\lambda_{3},\ldots,\lambda_{m}$ in this order. Consider this
 $S$.
 
-We have $B\sim S$. In other words, there is a invertible matrix $V\in
-\mathbb{F}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ such that
+We have $B\sim S$. In other words, there is an invertible matrix
+$V\in\mathbb{F}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ such that
 $S=VBV^{-1}$. Consider this $V$.
 
 Now, let%
@@ -6211,7 +6226,7 @@ linear map $f:W\rightarrow W$ has at least one nonzero
 eigenvector\footnote{since $f$ is a $\mathbb{C}$-linear map from the
 finite-dimensional $\mathbb{C}$-vector space $W$ to itself, and since $\dim
 W>0$}. Pick such a nonzero eigenvector $x$, and let $\lambda\in\mathbb{C}$ be
-the corresponding eigenvalue. Thus, $x\in W$ and $v\neq0$ and $f\left(
+the corresponding eigenvalue. Thus, $x\in W$ and $x\neq0$ and $f\left(
 x\right)  =\lambda x$. Since $f\left(  x\right)  =Bx$ (by the definition of
 $f$), we can rewrite the latter equality as $Bx=\lambda x$. In contrast,
 $Bw\neq\lambda w$ (since $w$ is not an eigenvector of $B$).
@@ -6363,126 +6378,126 @@ eigenvector of $A$; let $\lambda_{A}$ be the corresponding eigenvalue. Now, it
 is not hard to show\footnote{Indeed, this is essentially a carbon copy of the
 proof of (\ref{pf.thm.jnf.schurtri-diag.C=2x2}) in our above proof of Theorem
 \ref{thm.jnf.schurtri-diag} (except that $C$, $\lambda_{1}$, $p$ and $B$ are
-now called $C_{A}$, $\lambda_{A}$, $p_{A}$ and $B_{A}$); thus, we leave the
+now called $C_{A}$, $\lambda_{A}$, $r_{A}$ and $B_{A}$); thus, we leave the
 details to the reader.} that the matrix $C_{A}$ can be written in block-matrix
 notation as%
 \begin{equation}
 C_{A}=\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A} & p_{A}\\
+\lambda_{A} & r_{A}\\
 0 & B_{A}%
 \end{array}
 \right)  , \label{pf.thm.schurtri.commute.schurtri.C=2x2}%
 \end{equation}
-where $p_{A}\in\mathbb{C}^{1\times\left(  m-1\right)  }$ is a row vector and
+where $r_{A}\in\mathbb{C}^{1\times\left(  m-1\right)  }$ is a row vector and
 $B_{A}\in\mathbb{C}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ is a
 matrix\footnote{The \textquotedblleft$0$\textquotedblright\ here is actually
-the zero vector in $\mathbb{C}^{m-1}$.}. Consider this $p_{A}$ and this
+the zero vector in $\mathbb{C}^{m-1}$.}. Consider this $r_{A}$ and this
 $B_{A}$.
 
 Forget that we fixed $A$. Thus, for each $A\in\mathcal{F}$, we have defined a
-complex number $\lambda_{A}$, a row vector $p_{A}\in\mathbb{C}^{1\times\left(
+complex number $\lambda_{A}$, a row vector $r_{A}\in\mathbb{C}^{1\times\left(
 m-1\right)  }$ and a matrix $B_{A}\in\mathbb{C}^{\left(  m-1\right)
 \times\left(  m-1\right)  }$ such that
 (\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) holds.
 
 Let $A\in\mathcal{F}$ and $A^{\prime}\in\mathcal{F}$ be arbitrary. We are
-going to show that $B_{AA^{\prime}}=B_{A}B_{A^{\prime}}$.
+going to show that $B_{A}B_{A^{\prime}}=B_{A^{\prime}}B_{A}$.
 
-Indeed, we first observe that the definitions of $C_{A}$ and $C_{A^{\prime}}$
-yield%
-\begin{align}
+Indeed, we first observe that $AA^{\prime}=A^{\prime}A$ (since any two
+matrices in $\mathcal{F}$ commute). But the definitions of $C_{A}$ and
+$C_{A^{\prime}}$ yield%
+\begin{equation}
 \underbrace{C_{A}}_{=U^{\ast}AU}\ \ \underbrace{C_{A^{\prime}}}_{=U^{\ast
-}A^{\prime}U}  &  =U^{\ast}A\underbrace{UU^{\ast}}_{=I_{m}}A^{\prime}%
-U=U^{\ast}AA^{\prime}U\nonumber\\
-&  =C_{AA^{\prime}} \label{pf.thm.schurtri.commute.schurtri.CACA'=}%
-\end{align}
-(by the definition of $C_{AA^{\prime}}$). However,
-(\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) yields%
-\begin{align*}
-C_{A}  &  =\left(
+}A^{\prime}U}=U^{\ast}A\underbrace{UU^{\ast}}_{=I_{m}}A^{\prime}U=U^{\ast
+}AA^{\prime}U.\nonumber
+\end{equation}
+However, (\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) yields%
+\[
+C_{A}=\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A} & p_{A}\\
+\lambda_{A} & r_{A}\\
 0 & B_{A}%
 \end{array}
 \right)  ,\ \ \ \ \ \ \ \ \ \ C_{A^{\prime}}=\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A^{\prime}} & p_{A^{\prime}}\\
+\lambda_{A^{\prime}} & r_{A^{\prime}}\\
 0 & B_{A^{\prime}}%
-\end{array}
-\right)  ,\\
-\text{and}\ \ \ \ \ \ \ \ \ \ C_{AA^{\prime}}  &  =\left(
-\begin{array}
-[c]{cc}%
-\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
-0 & B_{AA^{\prime}}%
-\end{array}
-\right)  .
-\end{align*}
-In view of this, we can rewrite (\ref{pf.thm.schurtri.commute.schurtri.CACA'=}%
-) as%
-\[
-\left(
-\begin{array}
-[c]{cc}%
-\lambda_{A} & p_{A}\\
-0 & B_{A}%
-\end{array}
-\right)  \left(
-\begin{array}
-[c]{cc}%
-\lambda_{A^{\prime}} & p_{A^{\prime}}\\
-0 & B_{A^{\prime}}%
-\end{array}
-\right)  =\left(
-\begin{array}
-[c]{cc}%
-\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
-0 & B_{AA^{\prime}}%
 \end{array}
 \right)  .
 \]
-Hence,%
+Thus,%
 \[
-\left(
+C_{A}C_{A^{\prime}}=\left(
 \begin{array}
 [c]{cc}%
-\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
-0 & B_{AA^{\prime}}%
-\end{array}
-\right)  =\left(
-\begin{array}
-[c]{cc}%
-\lambda_{A} & p_{A}\\
+\lambda_{A} & r_{A}\\
 0 & B_{A}%
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cc}%
-\lambda_{A^{\prime}} & p_{A^{\prime}}\\
+\lambda_{A^{\prime}} & r_{A^{\prime}}\\
 0 & B_{A^{\prime}}%
 \end{array}
 \right)  =\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A}\lambda_{A^{\prime}} & \lambda_{A}p_{A^{\prime}}+p_{A}B_{A^{\prime
+\lambda_{A}\lambda_{A^{\prime}} & \lambda_{A}r_{A^{\prime}}+r_{A}B_{A^{\prime
 }}\\
 0 & B_{A}B_{A^{\prime}}%
 \end{array}
 \right)
 \]
 (by applying Proposition \ref{prop.blockmatrix.mult-2x2} and simplifying).
+Thus,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A}\lambda_{A^{\prime}} & \lambda_{A}r_{A^{\prime}}+r_{A}B_{A^{\prime
+}}\\
+0 & B_{A}B_{A^{\prime}}%
+\end{array}
+\right)  =C_{A}C_{A^{\prime}}=U^{\ast}AA^{\prime}U.
+\]
+The same argument (with the roles of $A$ and $A^{\prime}$ interchanged) shows
+that%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A^{\prime}}\lambda_{A} & \lambda_{A^{\prime}}r_{A}+r_{A^{\prime}%
+}B_{A}\\
+0 & B_{A^{\prime}}B_{A}%
+\end{array}
+\right)  =U^{\ast}A^{\prime}AU.
+\]
+The right hand sides of these two equalities are equal (since $U^{\ast
+}\underbrace{AA^{\prime}}_{=A^{\prime}A}U=U^{\ast}A^{\prime}AU$). Thus, so are
+their left hand sides. In other words,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A}\lambda_{A^{\prime}} & \lambda_{A}r_{A^{\prime}}+r_{A}B_{A^{\prime
+}}\\
+0 & B_{A}B_{A^{\prime}}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A^{\prime}}\lambda_{A} & \lambda_{A^{\prime}}r_{A}+r_{A^{\prime}%
+}B_{A}\\
+0 & B_{A^{\prime}}B_{A}%
+\end{array}
+\right)  .
+\]
 Comparing the bottom-right blocks of the block matrices on both sides, we
-obtain $B_{AA^{\prime}}=B_{A}B_{A^{\prime}}$.
-
-Similarly, $B_{A^{\prime}A}=B_{A^{\prime}}B_{A}$. However, $AA^{\prime
-}=A^{\prime}A$ (since any two matrices in $\mathcal{F}$ commute). Thus,
-$B_{AA^{\prime}}=B_{A^{\prime}A}$. In view of $B_{AA^{\prime}}=B_{A}%
-B_{A^{\prime}}$ and $B_{A^{\prime}A}=B_{A^{\prime}}B_{A}$, we can rewrite this
-as
+obtain
 \begin{equation}
 B_{A}B_{A^{\prime}}=B_{A^{\prime}}B_{A}.
 \label{pf.thm.schurtri.commute.schurtri.BABA'comm}%
@@ -6556,7 +6571,7 @@ QAQ^{\ast}  &  =WU^{\ast}A\underbrace{\left(  WU^{\ast}\right)  ^{\ast}%
 \right)  }\ \ \underbrace{C_{A}}_{\substack{=\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A} & p_{A}\\
+\lambda_{A} & r_{A}\\
 0 & B_{A}%
 \end{array}
 \right)  \\\text{(by (\ref{pf.thm.schurtri.commute.schurtri.C=2x2}))}%
@@ -6576,7 +6591,7 @@ QAQ^{\ast}  &  =WU^{\ast}A\underbrace{\left(  WU^{\ast}\right)  ^{\ast}%
 \right)  \left(
 \begin{array}
 [c]{cc}%
-\lambda_{A} & p_{A}\\
+\lambda_{A} & r_{A}\\
 0 & B_{A}%
 \end{array}
 \right)  \left(
@@ -6589,7 +6604,7 @@ QAQ^{\ast}  &  =WU^{\ast}A\underbrace{\left(  WU^{\ast}\right)  ^{\ast}%
 &  =\left(
 \begin{array}
 [c]{cc}%
-1\cdot\lambda_{A}\cdot1 & 1\cdot p_{A}\cdot V^{\ast}\\
+1\cdot\lambda_{A}\cdot1 & 1\cdot r_{A}\cdot V^{\ast}\\
 V\cdot0\cdot1 & V\cdot B_{A}\cdot V^{\ast}%
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \left(
@@ -6602,7 +6617,7 @@ V\cdot0\cdot1 & V\cdot B_{A}\cdot V^{\ast}%
 &  =\left(
 \begin{array}
 [c]{cc}%
-\lambda_{A} & p_{A}V^{\ast}\\
+\lambda_{A} & r_{A}V^{\ast}\\
 0 & VB_{A}V^{\ast}%
 \end{array}
 \right)  .
@@ -7067,7 +7082,7 @@ $i$. Hence, we have obtained a contradiction, and our proof of Lemma
 \end{proof}
 
 \begin{exercise}
-\label{lem.schurtri.normal.tri.2}\fbox{3} \textbf{(a)} Let $T\in
+\label{exe.schurtri.normal.tri.2}\fbox{3} \textbf{(a)} Let $T\in
 \mathbb{C}^{n\times n}$ be an upper-triangular matrix. Prove that%
 \[
 \sum_{i=1}^{m}\left(  TT^{\ast}-T^{\ast}T\right)  _{i,i}=\sum_{i=1}%
@@ -7181,7 +7196,7 @@ similar to $A$. Hence, $D$ is similar to $A$ (by Proposition
 \ref{prop.schurtri.unisim.sim}). Moreover, the matrix $D$ is upper-triangular
 (since it is diagonal). Thus, Proposition \ref{prop.schurtri.similar.T-diag}
 (applied to $\mathbb{F}=\mathbb{C}$ and $T=D$) yields that the diagonal
-entries of $T$ are the eigenvalues of $A$ (with their algebraic multiplicities).
+entries of $D$ are the eigenvalues of $A$ (with their algebraic multiplicities).
 
 Next, we shall show that the columns of $U$ are eigenvectors of $A$. Indeed,
 from $A=UDU^{\ast}$, we obtain
@@ -7195,7 +7210,7 @@ Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
 of the diagonal matrix $D$. Let $i\in\left[  n\right]  $. Then, $De_{i}%
 =\lambda_{i}e_{i}$ (where $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ denotes
 the standard basis of $\mathbb{C}^{n}$), since $D$ is a diagonal matrix whose
-$i$-th diagonal entry is $e_{i}$. Therefore,%
+$i$-th diagonal entry is $\lambda_{i}$. Therefore,%
 \[
 \underbrace{AU}_{=UD}e_{i}=U\underbrace{De_{i}}_{=\lambda_{i}e_{i}}%
 =\lambda_{i}\cdot Ue_{i}.
@@ -7219,13 +7234,13 @@ an orthonormal basis of $\mathbb{C}^{n}$ consisting of eigenvectors of $A$
 \ref{thm.schurtri.normal.spectral} \textbf{(b)}.
 \end{proof}
 
-The decomposition $A=UDU^{\ast}$ in Theorem
-\ref{thm.schurtri.commute.schurtri} (or, to be more precise, the pair $\left(
-U,D\right)  $) is called a \emph{spectral decomposition} of $A$. It is not
-unique (e.g., we can replace $U$ by $\lambda U$ whenever $\lambda\in
-\mathbb{C}$ satisfies $\left\vert \lambda\right\vert =1$; this does not change
-$UDU^{\ast}$). We can actually choose the order of the diagonal entries of $D$
-at will, as the following simple corollary shows:
+The decomposition $A=UDU^{\ast}$ in Theorem \ref{thm.schurtri.normal.spectral}
+\textbf{(a)} (or, to be more precise, the pair $\left(  U,D\right)  $) is
+called a \emph{spectral decomposition} of $A$. It is not unique (e.g., we can
+replace $U$ by $\lambda U$ whenever $\lambda\in\mathbb{C}$ satisfies
+$\left\vert \lambda\right\vert =1$; this does not change $UDU^{\ast}$). We can
+actually choose the order of the diagonal entries of $D$ at will, as the
+following simple corollary shows:
 
 \begin{corollary}
 \label{cor.schurtri.normal.given-order}Let $A\in\mathbb{C}^{n\times n}$ be a
@@ -7555,8 +7570,8 @@ $UAU^{\ast}$ is diagonal.
 
 \subsection{The Cayley--Hamilton theorem}
 
-We will now state the famous Cayley--Hamilton theorem, and to prove it at
-least for matrices with complex entries. This will serve as a reminder of an
+We will now state the famous Cayley--Hamilton theorem, and prove it at least
+for matrices with complex entries. This will serve as a reminder of an
 important theorem (which will soon be used), and also as an illustration of
 how Schur triangularization can be applied.
 
@@ -7571,7 +7586,7 @@ field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,%
 p_{A}\left(  A\right)  =0.
 \]
 (The \textquotedblleft$0$\textquotedblright\ on the right hand side here means
-the zero matrix $0_{2\times2}$.)
+the zero matrix $0_{n\times n}$.)
 \end{theorem}
 
 \begin{example}
@@ -7798,7 +7813,7 @@ T_{1}T_{2}\cdots T_{n}=0.
 \end{lemma}
 
 \begin{example}
-For $n=3$, Theorem \ref{lem.uptri.prod=0} is saying the following: If
+For $n=3$, Lemma \ref{lem.uptri.prod=0} is saying the following: If
 $T_{1},T_{2},T_{3}$ are three $3\times3$-matrices of the form%
 \[
 T_{1}=\left(
@@ -7924,7 +7939,7 @@ columns of the matrix $T_{1}T_{2}\cdots T_{p}$ are $0$. In other words,
 step. Thus, (\ref{pf.lem.uptri.prod=0.goal}) is proven.] \medskip
 
 Now, we can apply (\ref{pf.lem.uptri.prod=0.goal}) to $k=n$, and conclude that
-the first $n$ columns of the matrix $T_{1}T_{2}\cdots T_{n}$ is $0$. Since
+the first $n$ columns of the matrix $T_{1}T_{2}\cdots T_{n}$ are $0$. Since
 this matrix $T_{1}T_{2}\cdots T_{n}$ has only $n$ columns, this means that all
 of its columns are $0$. In other words, the entire matrix $T_{1}T_{2}\cdots
 T_{n}$ is $0$. This proves Lemma \ref{lem.uptri.prod=0}.
@@ -8057,8 +8072,8 @@ and $\left(  f_{2},f_{5},f_{8},f_{11},\ldots\right)  $ are $\left(
 \label{exe.schurtri.ch.lin-rec-kd}\fbox{5} Let $a_{1},a_{2},\ldots,a_{k}$ be
 $k$ numbers. Let $\left(  x_{0},x_{1},x_{2},\ldots\right)  $ be any $\left(
 a_{1},a_{2},\ldots,a_{k}\right)  $-recurrent sequence of numbers. Let $d$ be a
-positive integer. Show that there exist $k$ integers $b_{1},b_{2},\ldots
-,b_{k}$ such that each $i\geq kd$ satisfies%
+positive integer. Show that there exist $k$ numbers $b_{1},b_{2},\ldots,b_{k}$
+such that each $i\geq kd$ satisfies%
 \[
 x_{i}=b_{1}x_{i-d}+b_{2}x_{i-2d}+\cdots+b_{k}x_{i-kd}.
 \]
@@ -8177,8 +8192,8 @@ $.
 is easy: For instance, if $k=4$, then this is saying that $A^{4}X=XB^{4}$, but
 this follows from
 \[
-A^{4}B=AAA\underbrace{AB}_{=BA}=AA\underbrace{AB}_{=BA}A=A\underbrace{AB}%
-_{=BA}AA=\underbrace{AB}_{=BA}AAA=BAAAA=BA^{4}.
+A^{4}X=AAA\underbrace{AX}_{=XB}=AA\underbrace{AX}_{=XB}B=A\underbrace{AX}%
+_{=XB}BB=\underbrace{AX}_{=XB}BBB=XBBBB=XB^{4}.
 \]
 
 
@@ -8258,9 +8273,9 @@ $AX=XB$. Hence, we can apply Lemma \ref{lem.schurtri.syl.AX=XB}.
 
 Thus, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} (applied to $p=p_{A}$)
 yields $p_{A}\left(  A\right)  X=Xp_{A}\left(  B\right)  $. However, Theorem
-\ref{thm.schurtri.ch.ch} \textbf{(a)} yields $p_{A}\left(  A\right)  =0$, so
-that $p_{A}\left(  A\right)  X=0X=0$. Comparing this with $p_{A}\left(
-A\right)  X=Xp_{A}\left(  B\right)  $, we obtain $Xp_{A}\left(  B\right)  =0$.
+\ref{thm.schurtri.ch.ch} yields $p_{A}\left(  A\right)  =0$, so that
+$p_{A}\left(  A\right)  X=0X=0$. Comparing this with $p_{A}\left(  A\right)
+X=Xp_{A}\left(  B\right)  $, we obtain $Xp_{A}\left(  B\right)  =0$.
 
 We shall show that the matrix $p_{A}\left(  B\right)  $ is invertible. Indeed,
 Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(a)} shows that the polynomial
@@ -8279,12 +8294,12 @@ thus, $\left\{  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right\}
 Substituting the matrix $B$ for $t$ on both sides of the equality
 (\ref{pf.thm.schurtri.syl.equivalence.pA=prod}), we obtain%
 \begin{equation}
-p_{A}\left(  B\right)  =\left(  B-\lambda_{1}I_{n}\right)  \left(
-B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda_{n}I_{n}\right)
+p_{A}\left(  B\right)  =\left(  B-\lambda_{1}I_{m}\right)  \left(
+B-\lambda_{2}I_{m}\right)  \cdots\left(  B-\lambda_{n}I_{m}\right)
 \label{pf.thm.schurtri.syl.equivalence.pAB=prod}%
 \end{equation}
-(by Lemma \ref{lem.p(A).multiplicative} \textbf{(b)}, applied to $B$ and $n$
-and $t-\lambda_{i}$ instead of $A$ and $k$ and $f_{i}$).
+(by Lemma \ref{lem.p(A).multiplicative} \textbf{(b)}, applied to $m$ and $B$
+and $n$ and $t-\lambda_{i}$ instead of $n$ and $A$ and $k$ and $f_{i}$).
 
 Now, let $i\in\left[  n\right]  $. Then, $\lambda_{i}\in\left\{  \lambda
 _{1},\lambda_{2},\ldots,\lambda_{n}\right\}  =\sigma\left(  A\right)  $.
@@ -9225,7 +9240,7 @@ Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)}. \medskip
 \ref{prop.jnf.jcell0-powers} \textbf{(b)} yields $B^{p}=0$. Hence,
 $\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =\dim
 \underbrace{\left(  \operatorname*{Ker}0\right)  }_{=\mathbb{F}^{m}}%
-=\dim\left(  \mathbb{F}^{m}\right)  =0$. Thus, Proposition
+=\dim\left(  \mathbb{F}^{m}\right)  =m$. Thus, Proposition
 \ref{prop.jnf.jcell0-powers} \textbf{(d)} is proven.
 \end{proof}
 
@@ -9334,11 +9349,11 @@ Proposition \ref{prop.blockmatrix.nullity-diag}).
 
 Note that we cannot hope for the matrix $J$ in Theorem \ref{thm.jnf.jnf} to be
 fully unique, unless it has only one diagonal block (i.e., unless $k=1$).
-Indeed, Proposition \ref{prop.blockmatrix.mult-uxv} shows that if we permute
-the diagonal blocks $J_{n_{1}}\left(  \lambda_{1}\right)  ,J_{n_{2}}\left(
-\lambda_{2}\right)  ,\ldots,J_{n_{k}}\left(  \lambda_{k}\right)  $, then the
-matrix stays similar to $A$. Thus, the order of these diagonal blocks can be
-chosen arbitrary.
+Indeed, Proposition \ref{prop.schurtri.similar.block-diag} shows that if we
+permute the diagonal blocks $J_{n_{1}}\left(  \lambda_{1}\right)  ,J_{n_{2}%
+}\left(  \lambda_{2}\right)  ,\ldots,J_{n_{k}}\left(  \lambda_{k}\right)  $,
+then the matrix stays similar to $A$. Thus, the order of these diagonal blocks
+can be chosen arbitrarily.
 
 \begin{definition}
 \label{def.jnf.jnf}Let $A$ be an $n\times n$-matrix over $\mathbb{C}$. Theorem
@@ -9559,7 +9574,7 @@ J_{2}\left(  9\right)  -8I_{2}\right)  \right)
 three dimensions on the right hand side.
 
 Proposition \ref{prop.jnf.jcell-lambda} yields $J_{2}\left(  8\right)
-=J_{2}\left(  0\right)  +2I_{2}$, so that $J_{2}\left(  8\right)
+=J_{2}\left(  0\right)  +8I_{2}$, so that $J_{2}\left(  8\right)
 -8I_{2}=J_{2}\left(  0\right)  $. Hence,%
 \[
 \dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)  -8I_{2}\right)
@@ -9658,7 +9673,7 @@ We have $A\sim J$, so that $A-\lambda I_{n}\sim J-\lambda I_{n}$ (by
 Proposition \ref{prop.schurtri.similar.same} \textbf{(h)}, applied to $B=J$),
 and therefore $\left(  A-\lambda I_{n}\right)  ^{p}\sim\left(  J-\lambda
 I_{n}\right)  ^{p}$ (by Proposition \ref{prop.schurtri.similar.same}
-\textbf{(f)}, applied to $A-\lambda I_{n}$ and $B-\lambda I_{n}$ and $p$
+\textbf{(f)}, applied to $A-\lambda I_{n}$ and $J-\lambda I_{n}$ and $p$
 instead of $A$, $B$ and $k$). Hence,%
 \begin{equation}
 \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
@@ -9834,11 +9849,11 @@ $m=n_{i}$) shows that we have
 \dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)
 =p\ \ \ \ \ \ \ \ \ \ \text{if }p\leq n_{i}.
 \]
-On the other hand, Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)}
+On the other hand, Proposition \ref{prop.jnf.jcell0-powers} \textbf{(d)}
 (applied to $m=n_{i}$) shows that we have
 \[
 \dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =n_{i}%
-\ \ \ \ \ \ \ \ \ \ \text{if }p>n_{i}.
+\ \ \ \ \ \ \ \ \ \ \text{if }p\geq n_{i}.
 \]
 Combining these two equalities, we obtain
 \[
@@ -9863,7 +9878,7 @@ n_{i}, & \text{if }p\geq n_{i}%
 -\lambda\right)  =M_{i}$ (by (\ref{pf.prop.jnf.unique.cellsizes.Mi=}))).
 
 Now, forget that we fixed $i$. We thus have proved
-(\ref{pf.prop.jnf.unique.cellsizes.nullity0}) for each $i\in\left[  k\right]
+(\ref{pf.prop.jnf.unique.cellsizes.nullity1}) for each $i\in\left[  k\right]
 $ satisfying $\lambda_{i}=\lambda$. Therefore,
 (\ref{pf.prop.jnf.unique.cellsizes.2}) becomes%
 \[
@@ -10347,7 +10362,7 @@ upper-triangular matrices}
 The block-diagonal matrix in Proposition \ref{prop.jnf.step2} is not yet a
 Jordan canonical form, but it is already somewhat close. At least, we have
 separated out all the distinct eigenvalues of $A$ and \textquotedblleft
-cleaned out the space between them\textquotedblright. We now can work with the
+cleaned out the space between them\textquotedblright. We can now work with the
 matrices $B_{1},B_{2},\ldots,B_{k}$ separately; each of these matrices has one
 distinct eigenvalue. Our next goal is to show that each of these matrices
 $B_{1},B_{2},\ldots,B_{k}$ is similar to a Jordan matrix. (This will easily
@@ -10858,7 +10873,7 @@ $\mathbb{F}^{n}$ that is a concatenation of orbits.
 
 Once Lemma \ref{lem.jnf.exist.tao} is proved, we will be done, because such a
 basis will be a forwarded basis (by Proposition \ref{prop.jnf.exist.step3.bwd}
-\textbf{(a)}), and therefore reading it backwards will gives us a backwarded
+\textbf{(a)}), and therefore reading it backwards will give us a backwarded
 basis (by Proposition \ref{prop.jnf.exist.step3.bwd} \textbf{(b)}), which is
 precisely what we wish. For example, if the basis that Lemma
 \ref{lem.jnf.exist.tao} gives us is%
@@ -11021,9 +11036,9 @@ So we have found a new spanning set of $\mathbb{F}^{n}$ that is still a
 concatenation of orbits, but is shorter than $\mathbf{s}$ (namely, it has one
 less vector than $\mathbf{s}$). In other words, we have found a way to replace
 a spanning set of $\mathbb{F}^{n}$ that is a concatenation of orbits by a
-smaller such set as long as it is linearly independent. Performing this
-process repeatedly, we will eventually obtain a basis (since we cannot keep
-making a finite list shorter and shorter indefinitely). This proves Lemma
+smaller such set as long as it is linearly dependent. Performing this process
+repeatedly, we will eventually obtain a basis (since we cannot keep making a
+finite list shorter and shorter indefinitely). This proves Lemma
 \ref{lem.jnf.exist.tao}.
 \end{proof}
 
@@ -11131,7 +11146,7 @@ dependencies, so we will have a basis.
 
 \begin{exercise}
 \label{exe.jnf.step3.An=0}\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ be a
-matrix. Prove that the following three statements are equivalent:
+matrix with $n>0$. Prove that the following three statements are equivalent:
 
 \begin{itemize}
 \item $\mathcal{A}$\textit{:} The matrix $A$ is nilpotent.
@@ -11251,13 +11266,13 @@ $\lambda\in\mathbb{F}$. Let $C=J_{k}\left(  \lambda\right)  $. Let
 $m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
 whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$ for
 all $i,j\in\left[  k\right]  $. (Here, we follow the convention that
-$\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when $\ell\notin\mathbb{N}$. Also,
-recall that $\dbinom{n}{\ell}=0$ when $n\in\mathbb{N}$ and $\ell>n$.)
+$\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when $\ell\notin\mathbb{N}$ or $\ell>n$.
+Also, recall that $\dbinom{n}{\ell}=0$ when $n\in\mathbb{N}$ and $\ell>n$.)
 \end{theorem}
 
 \begin{proof}
 [First proof of Theorem \ref{thm.jnf.powers.Cm}.]Induct on $m$ and use
-$C^{m}=CC^{m-1}$ as well as Pascal's recursion%
+$C^{m}=CC^{m-1}$ (for $m>0$) as well as Pascal's recursion%
 \[
 \dbinom{n}{\ell}=\dbinom{n-1}{\ell}+\dbinom{n-1}{\ell-1}.
 \]
@@ -11531,7 +11546,7 @@ polynomials $q_{A}$ and $\widetilde{q}_{A}$ have the same degree (since both
 have minimum degree) and the same leading coefficients (because they are both
 monic). Thus, their difference $q_{A}-\widetilde{q}_{A}$ is a polynomial of
 smaller degree than $q_{A}$ and $\widetilde{q}_{A}$; furthermore, this
-difference $q_{a}-\widetilde{q}_{A}$ annihilates $A$ (because $\left(
+difference $q_{A}-\widetilde{q}_{A}$ annihilates $A$ (because $\left(
 q_{A}-\widetilde{q}_{A}\right)  \left(  A\right)  =q_{A}\left(  A\right)
 -\widetilde{q}_{A}\left(  A\right)  =0-0=0$). Thus, by scaling this difference
 by an appropriate scalar in $\mathbb{F}$, we can make it monic (since it is
@@ -11576,6 +11591,9 @@ t\right)  =\left(  t-2\right)  ^{2}\left(  t-3\right)  $.
 ,\lambda_{k}$. (Each of these $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$ can
 appear on the diagonal any positive number of times.)
 \end{exercise}
+
+(For the pedants: The $0\times0$-matrix has minimal polynomial $1$. This is
+because $I_{0}$ is the zero matrix -- after all, there is only one $0\times0$-matrix!)
 
 \begin{exercise}
 \fbox{3} Let $\mathbb{F}$ be a field. Let $n\geq2$ be an integer. Let
@@ -11627,8 +11645,8 @@ Substituting $A$ for $t$ in the equality
 \ref{lem.p(A).multiplicative} \textbf{(a)}), we obtain%
 \[
 f\left(  A\right)  =\underbrace{q_{A}\left(  A\right)  }%
-_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}\cdot
-g\left(  A\right)  +r\left(  A\right)  =r\left(  A\right)  ,
+_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}%
+}\cdot\,g\left(  A\right)  +r\left(  A\right)  =r\left(  A\right)  ,
 \]
 so that $r\left(  A\right)  =f\left(  A\right)  =0$. In other words, $r$
 annihilates $A$. Since $\deg r<\deg q_{A}$, this entails that $r=0$ (since
@@ -12215,7 +12233,8 @@ polynomial)}}}+\left(  -1\right)  ^{n+1}\underbrace{f_{0}\left(  -1\right)
 -1\right)  ^{n+1}\left(  -1\right)  ^{n-1}}_{=1}f_{0}\\
 &  =t\left(  t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}\right)
 +f_{0}\\
-&  =t^{n}+f_{n-1}t^{n-1}+f_{2}t^{2}+f_{1}t^{1}+f_{0}=f\left(  t\right)  .
+&  =t^{n}+f_{n-1}t^{n-1}+\cdots+f_{2}t^{2}+f_{1}t^{1}+f_{0}=f\left(  t\right)
+.
 \end{align*}
 Thus, $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $ is proved. This
 completes the induction step. Hence, we have proved the $p_{C_{f}}\left(
@@ -12423,7 +12442,7 @@ $N$ is strictly upper-triangular). Thus, Claim 1 is proved.
 \begin{noncompile}
 Now, we need to prove Claim 2 -- i.e., we need to prove that $D$ and $N$ can
 be written as polynomials in $A$. We shall first piece together a polynomial
-$f\in\mathbb{C}\left[  t\right]  $ that satisfies $f\left(  D\right)  =A$. The
+$f\in\mathbb{C}\left[  t\right]  $ that satisfies $f\left(  A\right)  =D$. The
 construction will be somewhat similar to Lagrange interpolation: We will look
 at distinct eigenvalues one at a time, finding polynomials that have a desired
 effect for their corresponding Jordan blocks; then we will obtain our $f$ as a
@@ -12455,11 +12474,11 @@ Jordan block of $J$ at eigenvalue $\mu_{i}$. (Thus, the minimal polynomial of
 $A$ is $\prod\limits_{i=1}^{m}\left(  t-\mu_{i}\right)  ^{\ell_{i}}$,
 according to Theorem \ref{thm.jnf.mipo.jnf}.)
 
-For each $j\in\left[  m\right]  $, we define a polynomial%
+For each $i\in\left[  m\right]  $, we define a polynomial%
 \begin{equation}
-g_{j}\left(  t\right)  :=\prod\limits_{j\neq i}\left(  t-\mu_{j}\right)
-^{\ell_{j}}\in\mathbb{C}\left[  t\right]  ,
-\label{pf.thm.jnf.jcdec.main.c2.g-def}%
+g_{i}\left(  t\right)  :=\prod\limits_{j\neq i}\left(  t-\mu_{j}\right)
+^{\ell_{j}}\in\mathbb{C}\left[  t\right]
+,\label{pf.thm.jnf.jcdec.main.c2.g-def}%
 \end{equation}
 where the product sign $\prod\limits_{j\neq i}$ means a product over all
 $j\in\left[  m\right]  $ except for $j=i$.
@@ -12881,23 +12900,23 @@ $\mathbb{F}$. Then, $f\left(  A\right)  $ commutes with $g\left(  A\right)  $.
 \end{proposition}
 
 \begin{proof}
-Write $f\left(  t\right)  $ as $f\left(  t\right)  =\sum_{i=0}^{n}f_{i}t^{i}$,
+Write $f\left(  t\right)  $ as $f\left(  t\right)  =\sum_{i=0}^{p}f_{i}t^{i}$,
 and write $g\left(  t\right)  $ as $g\left(  t\right)  =\sum_{j=0}^{m}%
 g_{j}t^{j}$. Then,%
 \[
-f\left(  A\right)  =\sum_{i=0}^{n}f_{i}A^{i}\ \ \ \ \ \ \ \ \ \ \text{and}%
+f\left(  A\right)  =\sum_{i=0}^{p}f_{i}A^{i}\ \ \ \ \ \ \ \ \ \ \text{and}%
 \ \ \ \ \ \ \ \ \ \ g\left(  A\right)  =\sum_{j=0}^{m}g_{j}A^{j}.
 \]
 Thus,%
 \[
-f\left(  A\right)  \cdot g\left(  A\right)  =\left(  \sum_{i=0}^{n}f_{i}%
+f\left(  A\right)  \cdot g\left(  A\right)  =\left(  \sum_{i=0}^{p}f_{i}%
 A^{i}\right)  \cdot\left(  \sum_{j=0}^{m}g_{j}A^{j}\right)  =\sum_{i=0}%
-^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}\underbrace{A^{i}A^{j}}_{=A^{i+j}}=\sum
-_{i=0}^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}A^{i+j}.
+^{p}\ \ \sum_{j=0}^{m}f_{i}g_{j}\underbrace{A^{i}A^{j}}_{=A^{i+j}}=\sum
+_{i=0}^{p}\ \ \sum_{j=0}^{m}f_{i}g_{j}A^{i+j}.
 \]
 A similar computation shows that%
 \[
-g\left(  A\right)  \cdot f\left(  A\right)  =\sum_{i=0}^{n}\ \ \sum_{j=0}%
+g\left(  A\right)  \cdot f\left(  A\right)  =\sum_{i=0}^{p}\ \ \sum_{j=0}%
 ^{m}f_{i}g_{j}A^{i+j}.
 \]
 Comparing these two, we obtain $f\left(  A\right)  \cdot g\left(  A\right)
@@ -12919,10 +12938,10 @@ $n\times n$-matrix commutes with $A$.
 Let us study the general case now.
 
 \begin{definition}
-Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. The
-\emph{centralizer} of $A$ is defined to be the set of all $n\times n$-matrices
-$B\in\mathbb{F}^{n\times n}$ such that $AB=BA$. We denote this set by
-$\operatorname*{Cent}A$.
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. The \emph{centralizer} of $A$ is defined to be the set of all
+$n\times n$-matrices $B\in\mathbb{F}^{n\times n}$ such that $AB=BA$. We denote
+this set by $\operatorname*{Cent}A$.
 \end{definition}
 
 We thus want to know what $\operatorname*{Cent}A$ is.
@@ -12930,10 +12949,11 @@ We thus want to know what $\operatorname*{Cent}A$ is.
 We begin with some general properties:
 
 \begin{proposition}
-\label{prop.jnf.cent.subalg}Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
-n$-matrix. Then, $\operatorname*{Cent}A$ is a subset of $\mathbb{F}^{n\times
-n}$ that is closed under addition, scaling and multiplication and contains
-$\lambda I_{n}$ for all $\lambda\in\mathbb{F}$. In other words:
+\label{prop.jnf.cent.subalg}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then, $\operatorname*{Cent}%
+A$ is a subset of $\mathbb{F}^{n\times n}$ that is closed under addition,
+scaling and multiplication and contains $\lambda I_{n}$ for all $\lambda
+\in\mathbb{F}$. In other words:
 
 \textbf{(a)} For any $B,C\in\operatorname*{Cent}A$, we have $B+C\in
 \operatorname*{Cent}A$.
@@ -13148,9 +13168,9 @@ exactly\textquotedblright\ if we know the Jordan canonical form of $A$.
 We start with simple propositions:
 
 \begin{proposition}
-\label{prop.jnf.cent.lambda}Let $A\in\mathbb{F}^{n\times n}$ and $\lambda
-\in\mathbb{F}$. Then, $\operatorname*{Cent}\left(  A-\lambda I_{n}\right)
-=\operatorname*{Cent}A$.
+\label{prop.jnf.cent.lambda}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ and $\lambda\in\mathbb{F}$. Then,
+$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
 \end{proposition}
 
 \begin{exercise}
@@ -13158,8 +13178,8 @@ We start with simple propositions:
 \end{exercise}
 
 \begin{proposition}
-\label{prop.jnf.cent.similar}Let $A$, $B$ and $S$ be three $n\times
-n$-matrices such that $S$ is invertible. Then,
+\label{prop.jnf.cent.similar}Let $\mathbb{F}$ be a field. Let $A$, $B$ and $S$
+be three $n\times n$-matrices such that $S$ is invertible. Then,
 \[
 \left(  B\in\operatorname*{Cent}A\right)  \ \Longleftrightarrow\ \left(
 SBS^{-1}\in\operatorname*{Cent}\left(  SAS^{-1}\right)  \right)  .
@@ -13624,12 +13644,12 @@ u_{j}\overline{v_{i}}.
 \end{lemma}
 
 \begin{proof}
-For each $i\in\left[  n\right]  $, let $w_{i}$ denote the $i$-th entry of the
-column vector $w$. According to the definition of matrix multiplication, this
-entry is given by%
+For each $i\in\left[  n\right]  $ and any column vector $w\in\mathbb{C}^{n}$,
+we let $w_{i}$ denote the $i$-th entry of the column vector $w$. According to
+the definition of matrix multiplication, this entry is given by%
 \begin{equation}
 w_{i}=M_{i,1}u_{1}+M_{i,2}u_{2}+\cdots+M_{i,n}u_{n}=\sum_{j=1}^{n}M_{i,j}%
-u_{j}. \label{pf.lem.herm.Muv.wi=}%
+u_{j}.\label{pf.lem.herm.Muv.wi=}%
 \end{equation}
 However, $Mu=\left(
 \begin{array}
@@ -13702,7 +13722,7 @@ M_{i,i}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\in\left[  n\right]  .
 1,1,0,0,\ldots,0\right)  ^{T}$, and we obtain
 \[
 M_{1,1}\cdot\overline{1}\cdot1+M_{1,2}\cdot\overline{1}\cdot1+M_{2,1}%
-\cdot\overline{1}\cdot1\cdot M_{2,2}\cdot\overline{1}\cdot1=0.
+\cdot\overline{1}\cdot1+M_{2,2}\cdot\overline{1}\cdot1=0.
 \]
 This simplifies to%
 \[
@@ -13719,7 +13739,7 @@ M_{1,2}+M_{2,1}=0.
 1,i,0,0,\ldots,0\right)  ^{T}$ (where $i=\sqrt{-1}$), and we obtain
 \[
 M_{1,1}\cdot\overline{1}\cdot1+M_{1,2}\cdot\overline{1}\cdot i+M_{2,1}%
-\cdot\overline{i}\cdot1\cdot M_{2,2}\cdot\overline{i}\cdot i=0.
+\cdot\overline{i}\cdot1+M_{2,2}\cdot\overline{i}\cdot i=0.
 \]
 This simplifies to%
 \[
@@ -13741,8 +13761,8 @@ M_{1,2}+M_{2,1}=0,
 we obtain $2M_{1,2}=0$. In other words, $M_{1,2}=0$. Similarly, we can show
 that%
 \begin{equation}
-M_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\neq j.
-\label{pf.lem.herm.M=0.Mij=0}%
+M_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\neq
+j.\label{pf.lem.herm.M=0.Mij=0}%
 \end{equation}
 
 \end{itemize}
@@ -13981,18 +14001,19 @@ The Hilbert matrix%
 $\dfrac{1}{i+j-1}$) is positive definite. In other words, for any $x=\left(
 x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$, we have%
 \[
-\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}\dfrac{\overline{x_{i}}x_{j}}{i+j-1}\geq0.
+\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}\dfrac{\overline{x_{i}}x_{j}}{i+j-1}\geq0,
 \]
-This is not obvious at all, and the proof will be the content of the next
-exercise. More generally, if $a_{1},a_{2},\ldots,a_{n}$ are positive reals,
-then the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is
-$\dfrac{1}{a_{i}+a_{j}}$ is positive definite.
+and equality holds only for $x=0$. This is not obvious at all, and the proof
+will be the content of the next exercise. More generally, if $a_{1}%
+,a_{2},\ldots,a_{n}$ are $n$ distinct positive reals, then the $n\times
+n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}{a_{i}+a_{j}}$ is
+positive definite.
 \end{example}
 
 \begin{exercise}
-\fbox{4} Let $a_{1},a_{2},\ldots,a_{n}$ be positive reals. Let $A$ be the
-$n\times n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}%
-{a_{i}+a_{j}}$. Prove that $A$ is positive definite. \medskip
+\fbox{4} Let $a_{1},a_{2},\ldots,a_{n}$ be distinct positive reals. Let $A$ be
+the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac
+{1}{a_{i}+a_{j}}$. Prove that $A$ is positive definite. \medskip
 
 [\textbf{Hint:} Recall that $\dfrac{1}{m}=\int_{0}^{1}t^{m-1}dt$ for each
 $m>0$. Also, integrating an $\mathbb{R}_{\geq0}$-valued function over $\left[
@@ -14177,7 +14198,7 @@ u,v\right\rangle =v^{\ast}u\right) \\
 \end{align*}
 Thus, $A$ is positive semidefinite.
 
-We have thus proved Proposition \ref{thm.herm.pos-semdef-using-evals}
+We have thus proved Theorem \ref{thm.herm.pos-semdef-using-evals}
 \textbf{(a)}. The proof of Proposition \ref{thm.herm.pos-semdef-using-evals}
 \textbf{(b)} is similar, except that we need to also observe that $x\neq0$
 entails $\left(  UE\right)  ^{\ast}x\neq0$ (because $U$ and $E$ are
@@ -14322,8 +14343,8 @@ setting $\delta=\sqrt{d-\left\vert x\right\vert ^{2}}$. Here, we need to
 convince ourselves that $d-\left\vert x\right\vert ^{2}$ is a positive real,
 i.e., that $d>\left\vert x\right\vert ^{2}$. Why is this the case?
 
-I claim that this follows from applying $\left\langle Az,z\right\rangle \geq0$
-to the vector $z=\left(
+I claim that this follows from applying $\left\langle Az,z\right\rangle >0$ to
+the vector $z=\left(
 \begin{array}
 [c]{c}%
 b\\
@@ -14379,10 +14400,10 @@ positive definiteness of $A$, since $z\neq0$). We can divide this inequality
 by $a$ (since $a>0$), and obtain $ad-bc>0$. Now, recall that $x=\dfrac
 {c}{\lambda}$ and $\lambda=\sqrt{a}$. Hence,%
 \begin{align*}
-d-\left\vert x\right\vert ^{2}  &  =d-\left\vert \dfrac{c}{\lambda}\right\vert
+d-\left\vert x\right\vert ^{2} &  =d-\left\vert \dfrac{c}{\lambda}\right\vert
 ^{2}=d-\dfrac{c\overline{c}}{\lambda^{2}}=d-\dfrac{cb}{a}%
 \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\overline{c}=b\text{ and }\lambda
-^{2}=a\right) \\
+^{2}=a\right)  \\
 &  =\dfrac{ad-bc}{a}>0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }ad-bc>0\text{
 and }a>0\right)  .
 \end{align*}
@@ -14395,7 +14416,7 @@ essentially generalizes our above argument for $d-\left\vert x\right\vert
 ^{2}>0$:
 
 \begin{lemma}
-\label{lem.herm.cholesky.x2d}Let $Q\in\mathbb{C}^{n\times n}$ be a invertible
+\label{lem.herm.cholesky.x2d}Let $Q\in\mathbb{C}^{n\times n}$ be an invertible
 matrix. Let $x\in\mathbb{C}^{n}$ be some column vector. Let $d\in\mathbb{R}$.
 Let%
 \[
@@ -14636,7 +14657,7 @@ It remains to show that this $L$ is unique. Indeed, we can basically read our
 argument above backwards. \textbf{If} $L\in\mathbb{C}^{\left(  n+1\right)
 \times\left(  n+1\right)  }$ is a lower-triangular matrix whose diagonal
 entries are positive reals and which satisfies $A=LL^{\ast}$, then we can
-write $A$ in the form $A=\left(
+write $L$ in the form $L=\left(
 \begin{array}
 [c]{cc}%
 Q & 0\\
@@ -14644,7 +14665,7 @@ x^{\ast} & \delta
 \end{array}
 \right)  $ for some $Q\in\mathbb{C}^{n\times n}$ and $x\in\mathbb{C}^{n}$ and
 some positive real $\delta$, where $Q$ is lower-triangular with its diagonal
-entries being real. The equation $A=LL^{\ast}$ then rewrites as%
+entries being positive reals. The equation $A=LL^{\ast}$ then rewrites as%
 \begin{equation}
 \left(
 \begin{array}
@@ -14658,7 +14679,7 @@ b^{\ast} & d
 QQ^{\ast} & Qx\\
 x^{\ast}Q^{\ast} & x^{\ast}x+\delta^{2}%
 \end{array}
-\right)  . \label{pf.thm.herm.cholesky.pd.uniq.2}%
+\right)  .\label{pf.thm.herm.cholesky.pd.uniq.2}%
 \end{equation}
 Thus, in particular, $B=QQ^{\ast}$. By the induction hypothesis, the
 lower-triangular matrix $Q\in\mathbb{C}^{n\times n}$ with real diagonal
@@ -15185,20 +15206,20 @@ Corollary \ref{cor.subspaces.dim-geq-del} \textbf{(b)}.
 
 \begin{lemma}
 \label{lem.herm.cour-fish-lem}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
-matrix. Let $\left(  v_{1},v_{2},\ldots,v_{k}\right)  $ be an orthonormal
-tuple of eigenvectors of $A$, and let $\mu_{1},\mu_{2},\ldots,\mu_{k}$ be the
-corresponding eigenvalues (so that $A_{i}v_{i}=\mu_{i}v_{i}$ for each
-$i\in\left[  k\right]  $). Assume that $\mu_{1}\leq\mu_{2}\leq\cdots\leq
-\mu_{k}$. Then, each $v\in\operatorname*{span}\left(  v_{1},v_{2},\ldots
-,v_{k}\right)  $ satisfies%
+matrix with $n>0$. Let $\left(  v_{1},v_{2},\ldots,v_{k}\right)  $ be an
+orthonormal tuple of eigenvectors of $A$, and let $\mu_{1},\mu_{2},\ldots
+,\mu_{k}$ be the corresponding eigenvalues (so that $Av_{i}=\mu_{i}v_{i}$ for
+each $i\in\left[  k\right]  $). Assume that $\mu_{1}\leq\mu_{2}\leq\cdots
+\leq\mu_{k}$. Then, each $v\in\operatorname*{span}\left(  v_{1},v_{2}%
+,\ldots,v_{k}\right)  $ satisfies%
 \begin{equation}
 \left\langle Av,v\right\rangle \geq\mu_{1}\left\langle v,v\right\rangle
 \label{eq.lem.herm.cour-fish-lem.geq}%
 \end{equation}
 and%
 \begin{equation}
-\left\langle Av,v\right\rangle \leq\mu_{k}\left\langle v,v\right\rangle .
-\label{eq.lem.herm.cour-fish-lem.leq}%
+\left\langle Av,v\right\rangle \leq\mu_{k}\left\langle v,v\right\rangle
+.\label{eq.lem.herm.cour-fish-lem.leq}%
 \end{equation}
 
 \end{lemma}
@@ -15349,13 +15370,13 @@ A,x\right)  . \label{pf.thm.herm.cour-fish.4}%
 However, I claim that $\inf\limits_{\substack{x\in S^{\prime};\\x\neq
 0}}\ \ R\left(  A,x\right)  \geq\lambda_{k}$ (actually, this is an equality,
 but we will not need this). Indeed, $\left(  u_{k},u_{k+1},\ldots
-,u_{n}\right)  $ is an orthonormal tuple of eigenvalues of $A$ (since $\left(
-u_{1},u_{2},\ldots,u_{n}\right)  $ is an orthonormal tuple of eigenvalues of
-$A$) with corresponding eigenvalues $\lambda_{k},\lambda_{k+1},\ldots
-,\lambda_{n}$ satisfying $\lambda_{k}\leq\lambda_{k+1}\leq\cdots\leq
-\lambda_{n}$ (since $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$).
-Thus, any $x\in\operatorname*{span}\left(  u_{k},u_{k+1},\ldots,u_{n}\right)
-$ satisfies%
+,u_{n}\right)  $ is an orthonormal tuple of eigenvectors of $A$ (since
+$\left(  u_{1},u_{2},\ldots,u_{n}\right)  $ is an orthonormal tuple of
+eigenvectors of $A$) with corresponding eigenvalues $\lambda_{k},\lambda
+_{k+1},\ldots,\lambda_{n}$ satisfying $\lambda_{k}\leq\lambda_{k+1}\leq
+\cdots\leq\lambda_{n}$ (since $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq
+\lambda_{n}$). Thus, any $x\in\operatorname*{span}\left(  u_{k},u_{k+1}%
+,\ldots,u_{n}\right)  $ satisfies%
 \[
 \left\langle Ax,x\right\rangle \geq\lambda_{k}\left\langle x,x\right\rangle
 \]
@@ -15383,7 +15404,7 @@ Furthermore, this supremum is a maximum, because
 =\sup\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
 \right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
 \text{since }R\left(  A,x\right)  =R\left(  A,y\right)  \text{ where }%
-y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }\right) \\
+y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }\right)  \\
 &  =\max\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
 \right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
@@ -15393,7 +15414,7 @@ y\right\vert \right\vert =1\\
 \text{is compact, and since a continuous function}\\
 \text{on a compact set always has a maximum}%
 \end{array}
-\right) \\
+\right)  \\
 &  =\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  .
 \end{align*}
 So we conclude that%
@@ -15658,16 +15679,18 @@ Induction on $n-r$.
 
 The \textit{base case} ($n-r=0$) is trivial, since $C=A$ in this case.
 
-In the \textit{induction step}, we obtain $C$ from $B$ by removing a single
-row and the corresponding column. Thus, by the original Cauchy interlacing
-theorem, we get $\lambda_{j}\left(  B\right)  \leq\lambda_{j}\left(  C\right)
-$. However, by the induction hypothesis, we get $\lambda_{j}\left(  A\right)
-\leq\lambda_{j}\left(  B\right)  $. Combining these inequalities, we get
-$\lambda_{j}\left(  A\right)  \leq\lambda_{j}\left(  C\right)  $. The
-remaining inequality $\lambda_{j}\left(  C\right)  \leq\lambda_{j+n-r}\left(
-A\right)  $ is proved similarly: By the original Cauchy interlacing theorem,
-we get $\lambda_{j}\left(  C\right)  \leq\lambda_{j+1}\left(  B\right)  $.
-However, by the induction hypothesis, we get $\lambda_{j+1}\left(  B\right)
+In the \textit{induction step}, let $B$ be the matrix obtained from $A$ by
+removing the first $n-r-1$ of the chosen rows and the corresponding columns.
+Then, we obtain $C$ from $B$ by removing a single row and the corresponding
+column. Thus, by the original Cauchy interlacing theorem, we get $\lambda
+_{j}\left(  B\right)  \leq\lambda_{j}\left(  C\right)  $. However, by the
+induction hypothesis, we get $\lambda_{j}\left(  A\right)  \leq\lambda
+_{j}\left(  B\right)  $. Combining these inequalities, we get $\lambda
+_{j}\left(  A\right)  \leq\lambda_{j}\left(  C\right)  $. The remaining
+inequality $\lambda_{j}\left(  C\right)  \leq\lambda_{j+n-r}\left(  A\right)
+$ is proved similarly: By the original Cauchy interlacing theorem, we get
+$\lambda_{j}\left(  C\right)  \leq\lambda_{j+1}\left(  B\right)  $. However,
+by the induction hypothesis, we get $\lambda_{j+1}\left(  B\right)
 \leq\lambda_{j+1+\left(  n-r-1\right)  }\left(  A\right)  =\lambda
 _{j+n-r}\left(  A\right)  $.
 \end{proof}
@@ -15800,8 +15823,8 @@ $). Adding these inequalities together, we obtain%
 \end{align*}
 (since the sum of all eigenvalues of a matrix is the trace of this matrix).
 
-Now, we need to show that there exists a unitary matrix $V\in\mathbb{C}%
-^{n\times m}$ such that%
+Now, we need to show that there exists an isometry $V\in\mathbb{C}^{n\times
+m}$ such that%
 \[
 \lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
 _{m}\left(  A\right)  =\operatorname*{Tr}\left(  V^{\ast}AV\right)  .
@@ -15810,11 +15833,12 @@ To do this, we construct $V$ as follows: We pick an eigenvector $x_{i}$ of $A$
 at eigenvalue $\lambda_{i}\left(  A\right)  $ for each $i\in\left[  n\right]
 $ in such a way that $\left(  x_{1},x_{2},\ldots,x_{n}\right)  $ is an
 orthonormal basis of $\mathbb{C}^{n}$. (This is possible because of Theorem
-2.6.1 \textbf{(b)}.) Now, let $V\in\mathbb{C}^{n\times m}$ be the matrix whose
-columns are $x_{1},x_{2},\ldots,x_{m}$. This matrix $V$ is an isometry, since
-$x_{1},x_{2},\ldots,x_{m}$ are orthonormal. Moreover,%
+\ref{thm.schurtri.normal.spectral} \textbf{(b)}.) Now, let $V\in
+\mathbb{C}^{n\times m}$ be the matrix whose columns are $x_{1},x_{2}%
+,\ldots,x_{m}$. This matrix $V$ is an isometry, since $x_{1},x_{2}%
+,\ldots,x_{m}$ are orthonormal. Moreover,%
 \begin{align*}
-V^{\ast}AV  &  =\left(
+V^{\ast}AV &  =\left(
 \begin{array}
 [c]{c}%
 x_{1}^{\ast}\\
@@ -15827,7 +15851,7 @@ x_{m}^{\ast}%
 [c]{cccc}%
 x_{1} & x_{2} & \cdots & x_{m}%
 \end{array}
-\right) \\
+\right)  \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
@@ -16097,8 +16121,8 @@ However, the conditions $\sum_{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}%
 \sum_{i=1}^{m}y_{i}$.
 
 \begin{proposition}
-Majorization is a partial order: That is, the binary relation $\succcurlyeq$
-on the set $\mathbb{R}^{n}$ is reflexive, antisymmetric and transitive.
+Majorization is a preorder: That is, the binary relation $\succcurlyeq$ on the
+set $\mathbb{R}^{n}$ is reflexive and transitive.
 \end{proposition}
 
 \begin{proof}
@@ -16108,7 +16132,15 @@ x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow}$ and $\sum_{i=1}%
 _{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}z_{i}^{\downarrow}$.
 \end{proof}
 
-However, majorization is not a total order: For example, the vectors%
+Majorization is not a partial order, since it fails to be antisymmetric: For
+example, $\left(  2,1\right)  ^{T}\succcurlyeq\left(  1,2\right)  ^{T}$ and
+$\left(  1,2\right)  ^{T}\succcurlyeq\left(  2,1\right)  ^{T}$. If we restrict
+ourselves to only the weakly decreasing $n$-tuples in $\mathbb{R}^{n}$, then
+majorization does become a partial order. The same holds if we restrict
+ourselves to only the weakly increasing $n$-tuples in $\mathbb{R}^{n}$.
+
+Even then, majorization does not become a total order: For example, the
+vectors%
 \[
 x=\left(
 \begin{array}
@@ -16173,13 +16205,13 @@ $A$. However, Corollary \ref{cor.interlacing.maj-1} yields that%
 _{m}\left(  A\right)   &  \leq A_{i_{1},i_{1}}+A_{i_{2},i_{2}}+\cdots
 +A_{i_{m},i_{m}}\\
 &  \leq\lambda_{n-m+1}\left(  A\right)  +\lambda_{n-m+2}\left(  A\right)
-+\cdots+\lambda_{n-m}\left(  A\right)
++\cdots+\lambda_{n}\left(  A\right)
 \end{align*}
 for any distinct $i_{1},i_{2},\ldots,i_{m}\in\left[  n\right]  $. The second
 inequality here says that%
 \[
 \lambda_{n-m+1}\left(  A\right)  +\lambda_{n-m+2}\left(  A\right)
-+\cdots+\lambda_{n-m}\left(  A\right)  \geq A_{i_{1},i_{1}}+A_{i_{2},i_{2}%
++\cdots+\lambda_{n}\left(  A\right)  \geq A_{i_{1},i_{1}}+A_{i_{2},i_{2}%
 }+\cdots+A_{i_{m},i_{m}}%
 \]
 for any distinct $i_{1},i_{2},\ldots,i_{m}\in\left[  n\right]  $. In other
@@ -16244,9 +16276,8 @@ make any difference.
 
 \begin{definition}
 \label{def.major.RH}Let $x\in\mathbb{R}^{n}$. Let $i$ and $j$ be two distinct
-elements of $\left[  n\right]  $ such that $x_{i}\leq x_{j}$. Let $t\in\left[
-x_{i},x_{j}\right]  $ (that is, $t\in\mathbb{R}$ and $x_{i}\leq t\leq x_{j}$).
-Let $y\in\mathbb{R}^{n}$ be the column vector obtained from $x$ by%
+elements of $\left[  n\right]  $ such that $x_{i}\leq x_{j}$. Let
+$y\in\mathbb{R}^{n}$ be the column vector obtained from $x$ by%
 \[
 \text{replacing the }i\text{-th and }j\text{-th coordinates }x_{i}\text{ and
 }x_{j}\text{ by }u\text{ and }v
@@ -16602,10 +16633,10 @@ would be a turn of smaller width than $\left(  a,b\right)  $, and if we had
 $x_{j}>y_{j}$, then $\left(  j,b\right)  $ would be a turn of smaller width
 than $\left(  a,b\right)  $). Thus, we have
 \begin{align*}
-x_{a}  &  >y_{a},\\
-x_{j}  &  =y_{j}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left\{  a+1,a+2,\ldots
+x_{a} &  >y_{a},\\
+x_{j} &  =y_{j}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left\{  a+1,a+2,\ldots
 ,b-1\right\}  ,\\
-x_{b}  &  <y_{b}.
+x_{b} &  <y_{b}.
 \end{align*}
 Since $y$ is weakly decreasing (so that $y_{a}\geq y_{a+1}\geq\cdots\geq
 y_{b}$), we thus obtain the following chain of inequalities:%
@@ -16615,7 +16646,7 @@ x_{a}>y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with
 \]
 (If there are no $j\in\left\{  a+1,a+2,\ldots,b-1\right\}  $, then this is
 supposed to read $x_{a}>y_{a}\geq y_{b}>x_{b}$.) This shows, in particular,
-that $y_{a}$ and $y_{b}$ lie in the open interval $\left(  x_{a},x_{b}\right)
+that $y_{a}$ and $y_{b}$ lie in the open interval $\left(  x_{b},x_{a}\right)
 $.
 
 Now, we make an RH move (on the vector $x$) that \textquotedblleft squeezes
@@ -16680,8 +16711,8 @@ an equality). Hence, it remains to prove $z_{a}\geq y_{a}$ in the latter case.
 So let us assume that we are in the latter case -- i.e., that we have
 $x_{a}-y_{a}\geq y_{b}-x_{b}$. Thus, $x_{a}\geq y_{b}-x_{b}+y_{a}$. Now,%
 \[
-z_{a}=\underbrace{x_{a}}_{\geq y_{b}-x_{b}+y_{a}}+x_{b}-y_{b}\geq y_{b}%
--x_{b}+y_{a}+x_{b}-y_{b}=y_{a},
+z_{a}=\underbrace{x_{a}}_{\geq y_{b}-x_{b}+y_{a}}+\,x_{b}-y_{b}\geq
+y_{b}-x_{b}+y_{a}+x_{b}-y_{b}=y_{a},
 \]
 qed.} and $z_{b}\leq y_{b}$\ \ \ \ \footnote{\textit{Proof.} The definition of
 $z_{b}$ shows that $z_{b}=x_{a}+x_{b}-y_{a}$ in the case when $x_{a}-y_{a}\leq
@@ -16693,8 +16724,8 @@ in the former case.
 So let us assume that we are in the former case -- i.e., that we have
 $x_{a}-y_{a}\leq y_{b}-x_{b}$. Thus, $x_{a}\leq y_{b}-x_{b}+y_{a}$. Now,%
 \[
-z_{b}=\underbrace{x_{a}}_{\leq y_{b}-x_{b}+y_{a}}+x_{b}-y_{a}\leq y_{b}%
--x_{b}+y_{a}+x_{b}-y_{a}=y_{b},
+z_{b}=\underbrace{x_{a}}_{\leq y_{b}-x_{b}+y_{a}}+\,x_{b}-y_{a}\leq
+y_{b}-x_{b}+y_{a}+x_{b}-y_{a}=y_{b},
 \]
 qed.}. Moreover, the numbers $z_{a}$ and $z_{b}$ lie in the interval $\left[
 x_{b},x_{a}\right]  $\ \ \ \ \footnote{\textit{Proof.} The definition of $z$
@@ -16717,15 +16748,15 @@ order-preserving, i.e., that $z$ is weakly decreasing. Since the only entries
 of $x$ that changed in our RH move were $x_{a}$ and $x_{b}$ (and since we know
 that $x$ is weakly decreasing), we only need to verify the inequalities
 \begin{align*}
-x_{a-1}  &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
+x_{a-1} &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a}  &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+z_{a} &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
+z_{a} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-x_{b-1}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+x_{b-1} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{b}  &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
+z_{b} &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
 \end{align*}
 Fortunately, these inequalities all follow easily from the facts that we know
 (viz., from the chain of inequalities%
@@ -16912,8 +16943,9 @@ Here are some examples of convex functions:
 
 \item $f\left(  t\right)  =t^{n}$ defines a convex function $f:\mathbb{R}%
 _{+}\rightarrow\mathbb{R}$ whenever $n\in\mathbb{R}\setminus\left(
-0,1\right)  $. Otherwise, it defines a concave function\footnote{A function
-$f:I\rightarrow\mathbb{R}$ is said to be \emph{concave} if $-f$ is convex.}.
+0,1\right)  $ (where $\mathbb{R}_{+}$ is the set of all positive reals).
+Otherwise, it defines a concave function\footnote{A function $f:I\rightarrow
+\mathbb{R}$ is said to be \emph{concave} if $-f$ is convex.}.
 
 \item $f\left(  t\right)  =\sin t$ defines a concave function $f:\left[
 0,\pi\right]  \rightarrow\mathbb{R}$ and a convex function $f:\left[  \pi
@@ -16941,9 +16973,9 @@ give it in two of its forms -- a simple unweighted and a more general weighted o
 
 \begin{theorem}
 [Jensen's inequality]\label{thm.major.jensen}Let $I\subseteq\mathbb{R}$ be an
-interval. Let $f:I\rightarrow\mathbb{R}$ be a convex function. Let
-$x_{1},x_{2},\ldots,x_{n}\in I$. Let $m=\dfrac{x_{1}+x_{2}+\cdots+x_{n}}{n}$.
-Then,%
+interval. Let $f:I\rightarrow\mathbb{R}$ be a convex function. Let $n$ be a
+positive integer, and let $x_{1},x_{2},\ldots,x_{n}\in I$. Let $m=\dfrac
+{x_{1}+x_{2}+\cdots+x_{n}}{n}$. Then,%
 \[
 f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
 \geq nf\left(  m\right)  .
@@ -17025,7 +17057,7 @@ mean that the sum $f\left(  x_{1}\right)  +f\left(  x_{2}\right)
 OPRH move to the vector $x$. Therefore, if $y$ is obtained from $x$ by a
 (finite) sequence of OPRH moves, then $f\left(  x_{1}\right)  +f\left(
 x_{2}\right)  +\cdots+f\left(  x_{n}\right)  \geq f\left(  y_{1}\right)
-+f\left(  y_{2}\right)  +\cdots+f\left(  y_{n}\right)  $. Hence, if if
++f\left(  y_{2}\right)  +\cdots+f\left(  y_{n}\right)  $. Hence, if
 $x\succcurlyeq y$, then $f\left(  x_{1}\right)  +f\left(  x_{2}\right)
 +\cdots+f\left(  x_{n}\right)  \geq f\left(  y_{1}\right)  +f\left(
 y_{2}\right)  +\cdots+f\left(  y_{n}\right)  $ (since Theorem
@@ -17054,8 +17086,8 @@ But showing this is easy: From $u\in\left[  x_{i},x_{j}\right]  $, we obtain
 u=\lambda x_{i}+\left(  1-\lambda\right)  x_{j}\ \ \ \ \ \ \ \ \ \ \text{for
 some }\lambda\in\left[  0,1\right]
 \]
-(namely, $\lambda=\dfrac{u-x_{j}}{x_{i}-x_{j}}$). Consider this $\lambda$.
-Then,%
+(namely, $\lambda=\dfrac{u-x_{j}}{x_{i}-x_{j}}$ if $x_{i}\neq x_{j}$, and
+otherwise $\lambda=1$). Consider this $\lambda$. Then,%
 \[
 v=\left(  1-\lambda\right)  x_{i}+\lambda x_{j}%
 \]
@@ -17362,11 +17394,12 @@ $f_{s}:I\rightarrow\mathbb{R}$ be the piecewise-linear function that sends
 each $z\in I$ to $\left\vert s-z\right\vert $. Show that the convex function
 $f$ can be interpolated on $S$ by a linear combination $\sum_{s\in S}%
 \alpha_{s}f_{s}$ of the functions $f_{s}$ with nonnegative coefficients
-$\alpha_{s}$; that is, show that there exists a nonnegative real $\alpha_{s}$
-for each $s\in S$ such that%
+$\alpha_{s}$ plus a linear function; that is, show that there exist two reals
+$\beta$ and $\gamma$ as well as a nonnegative real $\alpha_{s}$ for each $s\in
+S$ such that%
 \[
-f\left(  z\right)  =\sum_{s\in S}\alpha_{s}\left\vert s-z\right\vert
-\ \ \ \ \ \ \ \ \ \ \text{for each }z\in S.
+f\left(  z\right)  =\beta z+\gamma+\sum_{s\in S}\alpha_{s}\left\vert
+s-z\right\vert \ \ \ \ \ \ \ \ \ \ \text{for each }z\in S.
 \]
 Then, apply this to $S=\left\{  x_{1},x_{2},\ldots,x_{n},y_{1},y_{2}%
 ,\ldots,y_{n}\right\}  $.]
@@ -17552,8 +17585,8 @@ From $u\in\left[  x_{i},x_{j}\right]  $, we obtain
 u=\lambda x_{i}+\left(  1-\lambda\right)  x_{j}\ \ \ \ \ \ \ \ \ \ \text{for
 some }\lambda\in\left[  0,1\right]
 \]
-(namely, $\lambda=\dfrac{u-x_{j}}{x_{i}-x_{j}}$). Consider this $\lambda$.
-Then,%
+(namely, $\lambda=\dfrac{u-x_{j}}{x_{i}-x_{j}}$ if $x_{i}\neq x_{j}$, and
+otherwise $1$). Consider this $\lambda$. Then,%
 \[
 v=\left(  1-\lambda\right)  x_{i}+\lambda x_{j}\ \ \ \ \ \ \ \ \ \ \left(
 \text{since }u+v=x_{i}+x_{j}\right)  .
@@ -17730,10 +17763,10 @@ Let us now show that $\operatorname*{Ker}\left(  A^{\ast}A\right)
 \subseteq\operatorname*{Ker}A$. Indeed, let $x\in\operatorname*{Ker}\left(
 A^{\ast}A\right)  $. Thus, $x\in\mathbb{C}^{n}$ and $A^{\ast}Ax=0$. Hence,
 \begin{align*}
-\left\vert \left\vert Ax\right\vert \right\vert ^{2}  &  =\underbrace{\left(
+\left\vert \left\vert Ax\right\vert \right\vert ^{2} &  =\underbrace{\left(
 Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}Ax\ \ \ \ \ \ \ \ \ \ \left(
 \text{since }\left\vert \left\vert v\right\vert \right\vert ^{2}=\left\langle
-v,v\right\rangle =v^{\ast}v\text{ for any }v\in\mathbb{C}^{n}\right) \\
+v,v\right\rangle =v^{\ast}v\text{ for any }v\in\mathbb{C}^{m}\right)  \\
 &  =x^{\ast}\underbrace{A^{\ast}Ax}_{=0}=0.
 \end{align*}
 In other words, $\left\vert \left\vert Ax\right\vert \right\vert =0$. Hence,
@@ -18671,7 +18704,7 @@ $<$ are just entrywise inequalities.
 \end{proof}
 
 \begin{warning}
-The relations $\geq$ and $\leq$ are not total orders (unless $n\leq1$). For
+The relations $\geq$ and $\leq$ are not total orders (unless $nm\leq1$). For
 instance, the row vector $\left(  2,1\right)  $ is neither $\geq$ nor $\leq$
 to $\left(  3,0\right)  $.
 \end{warning}
@@ -18693,8 +18726,8 @@ which a vector $v$ satisfies both $v>v$ and $v\leq v$.
 Given two matrices $A$ and $B$, the relation $A\geq B$ is \textbf{not}
 equivalent to \textquotedblleft$A>B$ or $A=B$\textquotedblright. For example,
 $\left(  3,1\right)  \geq\left(  2,1\right)  $ is true, but we have neither
-$\left(  2,1\right)  >\left(  3,1\right)  $ nor $\left(  2,1\right)  =\left(
-3,1\right)  $.
+$\left(  3,1\right)  >\left(  2,1\right)  $ nor $\left(  3,1\right)  =\left(
+2,1\right)  $.
 \end{warning}
 
 \begin{exercise}
@@ -18813,12 +18846,12 @@ all the $A_{i,j}$ are positive reals and thus we have $\arg\left(
 A_{i,j}x_{j}\right)  =\arg x_{j}$). Let $\varphi$ be this argument, and let
 $\omega:=e^{-i\varphi}$. Then, $\omega$ is a complex number satisfying
 $\left\vert \omega\right\vert =1$, and the numbers $\omega x_{1},\omega
-x_{2},\ldots,\omega x_{n}$ are nonnegative reals. This shows that $\omega
+x_{2},\ldots,\omega x_{m}$ are nonnegative reals. This shows that $\omega
 x\geq0$, so that $\left\vert \omega x\right\vert =\omega x$. However, Exercise
 \ref{exe.posmat.abs-lamA} yields $\left\vert \omega x\right\vert
 =\underbrace{\left\vert \omega\right\vert }_{=1}\cdot\left\vert x\right\vert
 =\left\vert x\right\vert $. Comparing these two equalities, we obtain
-$\left\vert x\right\vert =\omega x$. Theorem \ref{prop.posmat.prod-geq-Ax}
+$\left\vert x\right\vert =\omega x$. Proposition \ref{prop.posmat.prod-geq-Ax}
 \textbf{(b)} is thus proven. \medskip
 
 \textbf{(c)} Suppose $x>0$ and $Ax=\left\vert A\right\vert x$. We must show
@@ -18830,9 +18863,9 @@ Write $x=\left(  x_{1},x_{2},\ldots,x_{m}\right)  ^{T}$. Thus, $x_{1}%
 Fix $i\in\left[  n\right]  $. Then,%
 \[
 \left(  \text{the }i\text{-th entry of }Ax\right)  =\left(  \text{the
-}i\text{-th entry of }\left\vert A\right\vert x\right)  .
+}i\text{-th entry of }\left\vert A\right\vert x\right)
 \]
-In other words,%
+(since $Ax=\left\vert A\right\vert x$). In other words,%
 \[
 \sum_{j=1}^{m}A_{i,j}x_{j}=\sum_{j=1}^{m}\underbrace{\left\vert A_{i,j}%
 \right\vert x_{j}}_{\substack{=\left\vert A_{i,j}x_{j}\right\vert
@@ -18842,9 +18875,9 @@ A_{i,j}x_{j}\right\vert .
 This shows that $\sum_{j=1}^{m}A_{i,j}x_{j}$ is a nonnegative real.
 Furthermore, we obtain
 \begin{align*}
-\sum_{j=1}^{m}A_{i,j}x_{j}  &  =\sum_{j=1}^{m}\left\vert A_{i,j}%
-x_{j}\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
-\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right) \\
+\sum_{j=1}^{m}A_{i,j}x_{j} &  =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}%
+\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right)  \\
 &  \geq\sum_{j=1}^{m}A_{i,j}x_{j}.
 \end{align*}
 This is a chain of inequalities in which the first and the last side are
@@ -18861,25 +18894,25 @@ $ are nonnegative reals. Since $x_{1},x_{2},\ldots,x_{m}$ are positive reals,
 this means that the $A_{i,j}$ for all $j\in\left[  m\right]  $ are nonnegative
 reals. Since we have proved this for all $i\in\left[  n\right]  $, we thus
 conclude that all entries of $A$ are nonnegative reals. Hence, $A\geq0$, so
-that $A=\left\vert A\right\vert $. This proves Theorem
+that $A=\left\vert A\right\vert $. This proves Proposition
 \ref{prop.posmat.prod-geq-Ax} \textbf{(c)}.
 \end{proof}
 
 \begin{proposition}
-\label{prop.posmat.ineq-calculus}\textbf{(a)} If $A,B,C,D\in\mathbb{C}%
+\label{prop.posmat.ineq-calculus}\textbf{(a)} If $A,B,C,D\in\mathbb{R}%
 ^{n\times m}$ satisfy $A\leq B$ and $C\leq D$, then $A+C\leq B+D$. \medskip
 
-\textbf{(b)} If $A,B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{m\times
+\textbf{(b)} If $A,B\in\mathbb{R}^{n\times m}$ and $C\in\mathbb{R}^{m\times
 p}$ satisfy $A\leq B$ and $0\leq C$, then $AC\leq BC$. \medskip
 
-\textbf{(c)} If $A,B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{p\times
+\textbf{(c)} If $A,B\in\mathbb{R}^{n\times m}$ and $C\in\mathbb{R}^{p\times
 n}$ satisfy $A\leq B$ and $0\leq C$, then $CA\leq CB$. \medskip
 
-\textbf{(d)} If $A,B\in\mathbb{C}^{n\times m}$ and $C,D\in\mathbb{C}^{m\times
+\textbf{(d)} If $A,B\in\mathbb{R}^{n\times m}$ and $C,D\in\mathbb{R}^{m\times
 p}$ satisfy $0\leq A\leq B$ and $0\leq C\leq D$, then $0\leq AC\leq BD$.
 \medskip
 
-\textbf{(e)} If $A,B\in\mathbb{C}^{n\times n}$ satisfy $0\leq A\leq B$, and if
+\textbf{(e)} If $A,B\in\mathbb{R}^{n\times n}$ satisfy $0\leq A\leq B$, and if
 $k\in\mathbb{N}$, then $0\leq A^{k}\leq B^{k}$.
 \end{proposition}
 
@@ -18908,7 +18941,8 @@ this for all $i$ and $k$, we thus obtain $AC\leq BC$. This proves Proposition
 \textbf{(d)} Part \textbf{(b)} yields $AC\leq BC$. Part \textbf{(c)} (applied
 to $C$, $D$ and $B$ instead of $A$, $B$ and $C$) yields $BC\leq BD$. Since the
 relation $\leq$ is transitive, we can conclude $AC\leq BD$ from these two
-inequalities. \medskip
+inequalities. The same argument (applied to $0$, $A$, $0$ and $C$ instead of
+$A$, $B$, $C$ and $D$) yields $0\cdot0\leq AB$. That is, $0\leq AB$. \medskip
 
 \textbf{(e)} Follows from \textbf{(d)} by induction on $k$.
 \end{proof}
@@ -19068,8 +19102,8 @@ $A\geq0$ and $n>0$. \medskip
 
 \textbf{(a)} If $\widetilde{A}$ is a principal submatrix of $A$ (that is, a
 matrix obtained from $A$ by removing a bunch of rows along with the
-corresponding columns), then $\rho\left(  \widetilde{A}\right)  \leq
-\rho\left(  A\right)  $. \medskip
+corresponding columns), and if $\widetilde{A}$ has at least one row, then
+$\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $. \medskip
 
 \textbf{(b)} We have $\max\left\{  A_{i,i}\ \mid\ i\in\left[  n\right]
 \right\}  \leq\rho\left(  A\right)  $. \medskip
@@ -19135,7 +19169,7 @@ T & 0\\
 $ (because inserting $0$ into a set of nonnegative reals cannot change the
 maximum of this set). Hence, $\rho\left(  B\right)  \leq\rho\left(  A\right)
 $ rewrites as $\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $.
-This proves Corollary \ref{cor.posmat.specrad.leq1a} \textbf{(a)}. \medskip
+This proves Corollary \ref{cor.posmat.specrad.leq1c} \textbf{(a)}. \medskip
 
 \textbf{(b)} We must show that $A_{i,i}\leq\rho\left(  A\right)  $ for all
 $i\in\left[  n\right]  $.
@@ -19170,7 +19204,7 @@ Therefore, $A_{i,i}=\rho\left(  \left(
 A_{i,i}%
 \end{array}
 \right)  \right)  \leq\rho\left(  A\right)  $. This proves Corollary
-\ref{cor.posmat.specrad.leq1a} \textbf{(b)}. \medskip
+\ref{cor.posmat.specrad.leq1c} \textbf{(b)}. \medskip
 
 \textbf{(c)} Follows from \textbf{(b)}.
 \end{proof}
@@ -19426,7 +19460,7 @@ $. If $r_{i}=0$, then this is obvious. So let WLOG assume that $r_{i}>0$.
 Hence, all $n$ numbers $r_{1},r_{2},\ldots,r_{n}$ are positive (since the
 smallest among them is $r_{i}>0$) and thus nonzero.
 
-Let $B$ the $n\times n$-matrix whose $\left(  u,v\right)  $-th entry is
+Let $B$ be the $n\times n$-matrix whose $\left(  u,v\right)  $-th entry is
 $\dfrac{r_{i}}{r_{u}}A_{u,v}$ for all $u,v\in\left[  n\right]  $%
 .\ \ \ \ \footnote{This is well-defined, since $r_{u}\neq0$ (because all $n$
 numbers $r_{1},r_{2},\ldots,r_{n}$ are nonzero).} Thus, $B$ is obtained from
@@ -19442,7 +19476,7 @@ $A$) yields
 _{\infty}=\left(  \text{the largest row sum of }\underbrace{\left\vert
 B\right\vert }_{\substack{=B\\\text{(since }B\geq0\text{)}}}\right)
 \nonumber\\
-&  =\left(  \text{the largest row sum of }B\right)  =r_{i}
+&  =\left(  \text{the largest row sum of }B\right)  =r_{i}%
 \label{pf.thm.posmat.rho-in-terms-of-rowsums.4}%
 \end{align}
 (since all row sums of $B$ are $r_{i}$). However, for each $u,v\in\left[
@@ -19563,8 +19597,8 @@ This proves Corollary \ref{cor.posmat.supereigenvectors} \textbf{(a)}.
 $\geq$ signs. \medskip
 
 \textbf{(c)} The proof is similar to the proof of Corollary
-\ref{cor.posmat.supereigenvectors} \textbf{(a)}, but uses $>$ signs instead of
-$\geq$ signs and uses $\max$ instead of $\min$. \medskip
+\ref{cor.posmat.supereigenvectors} \textbf{(a)}, but uses $\leq$ signs instead
+of $\geq$ signs and uses $\max$ instead of $\min$. \medskip
 
 \textbf{(d)} The proof is analogous to the proof of Corollary
 \ref{cor.posmat.supereigenvectors} \textbf{(c)}.
@@ -19656,7 +19690,7 @@ vector $\left(  a_{1},a_{2}\right)  \in\mathbb{R}^{1\times2}$ satisfying
 $a_{1}\geq0$ and $a_{2}\geq0$ and $a_{1}+a_{2}=1$.
 
 If we start at state $s_{1}$ and let $k$ minutes pass, then the probability
-distribution for the resulting state is $s_{1}P^{k}$ (why?). More generally,
+distribution for the resulting state is $e_{1}P^{k}$ (why?). More generally,
 if we start with a probability distribution $d\in\mathbb{R}^{1\times2}$ and
 let $k$ minutes pass, then the resulting state will be distributed according
 to $dP^{k}$ (why?). So our question about the steady state can be rewritten as
@@ -20035,14 +20069,14 @@ $j\in\left[  n\right]  $ satisfying $j\notin K$. Consider this $j$. Then,
 $\sum_{\substack{k\in\left[  n\right]  ;\\k\notin K}}A_{i,k}\geq A_{i,j}$
 (since $A\geq0$ entails that all $A_{i,k}$ are nonnegative). However,%
 \begin{align*}
-\sum_{k\in K}A_{i,k}  &  =\underbrace{\sum_{k\in\left[  n\right]  }A_{i,k}%
+\sum_{k\in K}A_{i,k} &  =\underbrace{\sum_{k\in\left[  n\right]  }A_{i,k}%
 }_{\substack{=\left(  \text{the }i\text{-th row sum of }A\right)
 \\=1\\\text{(since all row sums of }A\text{ equal }1\text{)}}%
 }-\underbrace{\sum_{\substack{k\in\left[  n\right]  ;\\k\notin K}}A_{i,k}%
 }_{\geq A_{i,j}}\leq1-\underbrace{A_{i,j}}_{\geq\min\left\{  A_{u,v}%
 \ \mid\ u,v\in\left[  n\right]  \right\}  }\\
-&  \leq1-v=\mu\ \ \ \ \ \ \ \ \ \ \left(  \text{by the definition of }%
-\mu\right)  .
+&  \leq1-\min\left\{  A_{u,v}\ \mid\ u,v\in\left[  n\right]  \right\}
+=\mu\ \ \ \ \ \ \ \ \ \ \left(  \text{by the definition of }\mu\right)  .
 \end{align*}
 This proves Claim 1.] \medskip
 
@@ -20125,19 +20159,17 @@ Recall that $B_{\bullet,j}$ denotes the $j$-th column of the matrix $B$. We
 have%
 \[
 y^{T}\underbrace{B}_{=A^{p}-ey^{T}}=y^{T}\left(  A^{p}-ey^{T}\right)
-=\underbrace{y^{T}A^{p}}_{=y^{T}}-\underbrace{y^{T}e}_{=1}y^{T}=y^{T}%
--y^{T}=0,
+=\underbrace{y^{T}A^{p}}_{=y^{T}}-\underbrace{y^{T}e}_{=1}y^{T}=y^{T}-y^{T}=0,
 \]
 and thus $y^{T}B_{\bullet,j}=0$ (since $y^{T}B_{\bullet,j}$ is the $j$-th
 entry of the row vector $y^{T}B$). Also, from $y^{T}e=1\neq0$, we obtain
 $y\neq0$. Hence, Lemma \ref{lem.posmat.proper-subset} (applied to
 $B_{\bullet,j}$ and $B_{k,j}$ and $A_{i,k}$ instead of $v$ and $v_{k}$ and
-$a_{i}$) yields that there exists some \textbf{proper} subset $K$ of $\left[
+$a_{k}$) yields that there exists some \textbf{proper} subset $K$ of $\left[
 n\right]  $ such that%
 \begin{equation}
 \left\vert \sum_{k=1}^{n}A_{i,k}B_{k,j}\right\vert \leq\sum_{k\in K}%
-A_{i,k}\left\vert B_{k,j}\right\vert .
-\label{pf.lem.posmat.crucifix-e.c2.Kieq}%
+A_{i,k}\left\vert B_{k,j}\right\vert .\label{pf.lem.posmat.crucifix-e.c2.Kieq}%
 \end{equation}
 Consider this $K$. Now, from (\ref{pf.lem.posmat.crucifix-e.c2.Cij=}), we
 obtain%
@@ -20147,10 +20179,10 @@ B_{k,j}\right\vert \leq\sum_{k\in K}A_{i,k}\underbrace{\left\vert
 B_{k,j}\right\vert }_{\substack{\leq\mu^{p}\\\text{(by
 (\ref{pf.lem.posmat.crucifix-e.c2.IH}),}\\\text{applied to }k\text{ instead of
 }i\text{)}}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
-(\ref{pf.lem.posmat.crucifix-e.c2.Kieq})}\right) \\
+(\ref{pf.lem.posmat.crucifix-e.c2.Kieq})}\right)  \\
 &  \leq\underbrace{\sum_{k\in K}A_{i,k}}_{\substack{\leq\mu\\\text{(by Claim
 1)}}}\mu^{p}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }A_{i,k}\geq0\text{ for
-all }k\right) \\
+all }k\right)  \\
 &  \leq\mu\mu^{p}=\mu^{p+1}.
 \end{align*}
 As we explained above, this completes the induction step. Thus, Claim 2 is
@@ -20264,9 +20296,10 @@ multiplicity $1$ (and therefore geometric multiplicity $1$ as well). \medskip
 ,x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with $x_{1}%
 +x_{2}+\cdots+x_{n}=1$. \medskip
 
-\textbf{(c)} There is at most one vector $y=\left(  y_{1},y_{2},\ldots
-,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=y^{T}$ and $x_{1}%
-y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. \medskip
+\textbf{(c)} For any given vector $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)
+^{T}\in\mathbb{C}^{n}$, there is at most one vector $y=\left(  y_{1}%
+,y_{2},\ldots,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=y^{T}$
+and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. \medskip
 
 \textbf{(d)} The only eigenvalue of $A$ that has absolute value $1$ is $1$.
 \end{lemma}
@@ -20488,7 +20521,7 @@ We already know that $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}%
 \in\mathbb{C}^{n}$ is a vector such that $y^{T}A=y^{T}$ and $x_{1}y_{1}%
 +x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. Moreover, Lemma \ref{lem.posmat.uniques}
 \textbf{(c)} tells us that there is at most one such vector; therefore, $y$ is
-the only such vector. This proves Theorem \ref{thm.posmat.perron} \textbf{(c)}
+the only such vector. This proves Theorem \ref{thm.posmat.perron} \textbf{(d)}
 (since $\rho\left(  A\right)  =1$, and since we know that $y$ is positive).
 \end{proof}
 
@@ -20703,7 +20736,7 @@ the Cayley-Hamilton theorem}, Discrete Mathematics, Volume 43, Issues 2--3,
 \bibitem[Strick20]{Strick20}Neil Strickland, \textit{Linear mathematics for
 applications}, 11 February 2020.\newline\url{https://neilstrickland.github.io/linear_maths/notes/linear_maths.pdf}
 
-\bibitem[Swanso20]{Swanso20}Irena Swanson, \textit{Introduction with Analysis
+\bibitem[Swanso20]{Swanso20}Irena Swanson, \textit{Introduction to Analysis
 with Complex Numbers}, 2020.\newline\url{https://web.archive.org/web/20201012174324/https://people.reed.edu/~iswanson/analysisconstructR.pdf}
 
 \bibitem[Tao07]{Tao07}Terence Tao, \textit{The Jordan normal form and the
